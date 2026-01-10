@@ -52,4 +52,4 @@ line-length = 999
 package = true
 
 [project.scripts]
-bot = "serverboizbot.main:start"
+serverboizbot = "serverboizbot.main:start"
