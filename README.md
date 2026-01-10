@@ -1,2 +1,32 @@
 # ServerBoizBot
-Anything goes bot for a homelab discord server
+
+Anything* goes bot for a homelab discord server
+
+## Contribution Guidelines
+
+1. Don't be malicious
+2. No NSFW
+
+## Building an extension
+
+main.py searches for any python files in the bot/extensions directory. 
+
+Any file located there needs a setup function.
+
+See the bot/extensions/example.py for... an example.
+
+The core directory is for all the non discord-py functionality. 
+
+### Quickstart
+
+A jinja template + python script has been provided to quickly create an extension.
+
+```uv run tools/create-extension.py```
+
+
+## Thoughts
+
+I realize I have already planned this out more than desired, but do whatever you want. Please contribute something awesome!
+
+
+

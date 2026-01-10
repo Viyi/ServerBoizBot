@@ -1,0 +1,27 @@
+from discord.ext import commands
+from discord import app_commands
+import discord
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class {{ extension_name }}(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    {% if listener_example %}
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        pass
+    {% endif %}
+
+    {% for command in commands %}
+    @commands.hybrid_command(name="{{ command }}", description="{{ command }} does something cool.")
+    async def {{ command }}(self, ctx):
+        await ctx.send(f"I ran {{ command }}!")
+    {% endfor %}
+
+
+async def setup(bot: commands.Bot):
+    await bot.add_cog({{ extension_name }}(bot))

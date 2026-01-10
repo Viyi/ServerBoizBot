@@ -8,11 +8,15 @@ import logging
 
 load_dotenv()
 
+
 logging.basicConfig(
     level=logging.INFO, format="[%(levelname)s] %(name)s:%(lineno)s %(message)s"
 )
 
 logger = logging.getLogger(__name__)
+
+if not os.getenv("DISCORD_TOKEN"):
+    logger.critical("DISCORD_TOKEN token expected in .env!")
 
 
 async def load_extensions(bot):
