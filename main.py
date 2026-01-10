@@ -1,0 +1,64 @@
+import os
+import asyncio
+import discord
+from discord.ext import commands
+from dotenv import load_dotenv
+import logging
+
+
+load_dotenv()
+
+logging.basicConfig(
+    level=logging.INFO, format="[%(levelname)s] %(name)s:%(lineno)s %(message)s"
+)
+
+logger = logging.getLogger(__name__)
+
+
+async def load_extensions(bot):
+    for filename in os.listdir("./bot/extensions"):
+        if filename.endswith(".py") and not filename.startswith("__"):
+            await bot.load_extension(f"bot.extensions.{filename[:-3]}")
+
+
+async def check_sync_required(bot: commands.Bot):
+    remote_commands = await bot.tree.fetch_commands()
+    local_commands = bot.tree.get_commands()
+
+    return len(remote_commands) != len(local_commands)
+
+
+async def main():
+    intents = discord.Intents.default()
+    intents.message_content = True
+
+    bot = commands.Bot(command_prefix="!", intents=intents)
+
+    @bot.command()
+    async def sync(ctx):
+        # Use this command to quickly sync /commands with !sync
+        bot.tree.copy_global_to(guild=ctx.guild)
+        synced = await bot.tree.sync(guild=ctx.guild)
+        await ctx.send(f"Synced {len(synced)} commands to this guild.")
+
+    @bot.event
+    async def on_ready():
+        logger.info(f"Logged in as {bot.user.name} (ID: {bot.user.id})")
+
+        if await check_sync_required(bot):
+            try:
+                synced = await bot.tree.sync()
+                logger.info(f"Synced {len(synced)} command(s)")
+            except Exception as e:
+                logger.error(f"Failed to sync commands: {e}")
+
+        logger.info("Bot is initialized, have fun!")
+
+    async with bot:
+        await load_extensions(bot)
+        await bot.start(os.getenv("DISCORD_TOKEN"))
+
+
+if __name__ == "__main__":
+    logger.info("Starting Bot")
+    asyncio.run(main())
