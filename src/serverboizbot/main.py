@@ -4,10 +4,11 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import logging
+from pathlib import Path
 
 
 load_dotenv()
-
+BASE_DIR = Path(__file__).resolve().parent
 
 logging.basicConfig(
     level=logging.INFO, format="[%(levelname)s] %(name)s:%(lineno)s %(message)s"
@@ -20,9 +21,9 @@ if not os.getenv("DISCORD_TOKEN"):
 
 
 async def load_extensions(bot):
-    for filename in os.listdir("./bot/extensions"):
+    for filename in os.listdir(BASE_DIR / "bot/extensions"):
         if filename.endswith(".py") and not filename.startswith("__"):
-            await bot.load_extension(f"bot.extensions.{filename[:-3]}")
+            await bot.load_extension(f"serverboizbot.bot.extensions.{filename[:-3]}")
 
 
 async def check_sync_required(bot: commands.Bot):
@@ -62,6 +63,9 @@ async def main():
         await load_extensions(bot)
         await bot.start(os.getenv("DISCORD_TOKEN"))
 
+
+def start():
+    asyncio.run(main())
 
 if __name__ == "__main__":
     logger.info("Starting Bot")

@@ -26,7 +26,7 @@ A jinja template + python script has been provided to quickly create an extensio
 
 ## Thoughts
 
-I realize I have already planned this out more than desired, but do whatever you want. Please contribute something awesome!
+I realize I have already planned this out more than desired, but really do whatever you want. Please contribute something awesome!
 
 
 

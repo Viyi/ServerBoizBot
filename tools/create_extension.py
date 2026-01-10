@@ -35,7 +35,7 @@ data = {"extension_name": extension_name, "commands": commands, "listener_exampl
 
 output = template.render(data)
 
-file_path = root_path / "bot" / "extensions" / Path(file_name).with_suffix(".py")
+file_path = root_path / "src/serverboizbot/bot/extensions" / Path(file_name).with_suffix(".py")
 with open(file_path, "w") as f:
     f.write(output)
 
