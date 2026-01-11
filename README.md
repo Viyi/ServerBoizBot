@@ -13,6 +13,8 @@ Anything* goes bot for a homelab discord server
 
 ## Building an Extension
 
+- https://docs.astral.sh/uv/getting-started/installation/
+
 main.py searches for any python files in the bot/extensions directory. 
 
 Any file located there needs a setup function.
