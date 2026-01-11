@@ -11,7 +11,7 @@ Anything* goes bot for a homelab discord server
 1. ```ghcr.io/viyi/serverboizbot:latest```
 2. include DISCORD_TOKEN in the environment
 
-## Building an extension
+## Building an Extension
 
 main.py searches for any python files in the bot/extensions directory. 
 
