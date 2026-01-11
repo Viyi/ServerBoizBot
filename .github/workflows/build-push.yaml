@@ -11,4 +11,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: viyi/serverboizbot:latest
+          tags: ghcr.io/Viyi/ServerBoizBot:latest
