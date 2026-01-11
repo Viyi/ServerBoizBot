@@ -13,13 +13,13 @@ class Example(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if "fortnite" in message.content:
-            logger.info("Fortnite detected!")
-            await message.channel.send("Ban Him!")
+            logger.info("This incident will be reported.")
+            await message.channel.send("!")
 
     # Commands are invoked by members.
     # using a commands.hybrid_command means it'll work with the ! or /
     # note: the / commands are slow to sync, there is a !sync command defined in main
-    @commands.hybrid_command(name="hello", description="Says hello to a member")
+    @commands.hybrid_command(name="hello", description="Says hello!")
     async def hello(self, ctx):
         await ctx.send(f"Hello {ctx.author}!")
 
