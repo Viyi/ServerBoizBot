@@ -7,6 +7,10 @@ Anything* goes bot for a homelab discord server
 1. Don't be malicious
 2. No NSFW
 
+## Running
+1. ghcr.io/viyi/serverboizbot:latest
+2. include DISCORD_TOKEN in the environment
+
 ## Building an extension
 
 main.py searches for any python files in the bot/extensions directory. 
