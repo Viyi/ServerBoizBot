@@ -1,6 +1,14 @@
--
-  name: Build and push
-  uses: docker/build-push-action@v6
-  with:
-    push: true
-    tags: viyi/serverboizbot:latest
+name: Build and push
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: viyi/serverboizbot:latest
