@@ -8,7 +8,7 @@ Anything* goes bot for a homelab discord server
 2. No NSFW
 
 ## Running
-1. ghcr.io/viyi/serverboizbot:latest
+1. ```ghcr.io/viyi/serverboizbot:latest```
 2. include DISCORD_TOKEN in the environment
 
 ## Building an extension
