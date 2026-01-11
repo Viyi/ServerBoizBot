@@ -13,8 +13,8 @@ class Example(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if "fortnite" in message.content:
-            logger.info("This incident will be reported.")
-            await message.channel.send("!")
+            logger.info("Fortnite? Are you SERIOUS?")
+            await message.channel.send("This incident will be reported.")
 
     # Commands are invoked by members.
     # using a commands.hybrid_command means it'll work with the ! or /
