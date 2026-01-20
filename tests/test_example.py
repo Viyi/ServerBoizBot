@@ -33,4 +33,4 @@ async def test_bot_hello(bot):
     
     await dpytest.message("!hello")
     
-    assert dpytest.get_message().content == f"Helllllo {username}!"
+    assert dpytest.get_message().content == f"Hello {username}!"
