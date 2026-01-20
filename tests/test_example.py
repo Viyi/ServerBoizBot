@@ -4,7 +4,7 @@ import logging
 from serverboizbot.main import load_extensions
 from serverboizbot.bot.extensions.example import setup as setup_example
 
-logger = logging.Logger(__name__)
+logger = logging.getLogger(__name__)
 
 # https://dpytest.readthedocs.io/en/latest/tutorials/using_pytest.html
 # For non-python people the "bot" parameter is a pytest fixture
