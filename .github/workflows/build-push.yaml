@@ -26,12 +26,13 @@ jobs:
         with:
           context: .
           target: tester
+          tags: test-container:latest
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Execute Pytest
-        run: docker run bot-tester
+        run: docker run --rm test-container:latest
 
       # 2. Login to Registry
       # Only login if we are on 'main' to avoid unnecessary auth on feature branches
