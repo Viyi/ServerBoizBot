@@ -4,3 +4,4 @@ __pycache__
 .ruff_cache
 serverboizbot.egg-info
 dist
+build

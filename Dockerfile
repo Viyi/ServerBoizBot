@@ -18,10 +18,14 @@ COPY . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-editable
 
-FROM python:3.11-slim
 
-# Copy the environment, but not the source code
-COPY --from=builder --chown=app:app /app/.venv /app/.venv
+FROM builder AS tester
 
-# Run the application
+CMD ["/app/.venv/bin/pytest", "tests"]
+
+FROM python:3.11-slim AS prod
+WORKDIR /app
+COPY --from=builder /app/.venv /app/.venv
+COPY ./src /app/src 
+
 CMD ["/app/.venv/bin/serverboizbot"]
