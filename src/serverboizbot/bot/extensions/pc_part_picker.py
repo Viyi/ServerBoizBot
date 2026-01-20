@@ -15,9 +15,9 @@ class PcPartPicker(commands.Cog):
     async def hello(self, ctx):
         
         msg = await ctx.send("Checking ram cost... ")
-        ram = get_ram_price()
+        ram = await get_ram_price()
         
-        await msg.edit(content=f"Found it!\n{ram.name} costs {ram.cheapest_price} at only {ram.spec['Price / GB']} / GB\nWhat a deal!")
+        await msg.edit(content=f"Found it!\n{ram.name} costs {ram.cheapest_price}\nThat is {ram.specs['Price / GB']} / GB!\nWhat a deal!")
         
         
 
