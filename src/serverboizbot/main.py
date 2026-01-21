@@ -61,7 +61,7 @@ async def main():
     intents = discord.Intents.default()
     intents.message_content = True
 
-    bot = commands.Bot(command_prefix="!", intents=intents)
+    bot = commands.AutoShardedBot(command_prefix="!", intents=intents)
     
     bot = setup_bot(bot)
     
