@@ -38,6 +38,7 @@ def setup_bot(bot: commands.Bot):
     async def guild_command_cleanup(ctx):
         # This command clears all guild commands for the current guild
         bot.tree.clear_commands(guild=ctx.guild)
+        bot.tree.clear_commands()
         await ctx.send("Cleared all guild commands.")
 
     @bot.command()
