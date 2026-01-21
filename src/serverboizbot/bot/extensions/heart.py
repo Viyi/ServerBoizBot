@@ -1,9 +1,6 @@
 from typing import Union
 from discord.ext import commands
-from discord import Client, Member, Reaction, User, app_commands
-import logging
-
-logger = logging.getLogger(__name__)
+from discord import Member, Reaction, User
 
 
 class Heart(commands.Cog):
@@ -11,8 +8,9 @@ class Heart(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_reaction_add(self, reaction: Reaction, user: Union[Member, User]):
+    async def on_reaction_add(self, reaction: Reaction, _: Union[Member, User]):
         if reaction.emoji == "❤️":
+            await reaction.message.add_reaction("❤️")
             await reaction.message.channel.send("❤️")
 
 

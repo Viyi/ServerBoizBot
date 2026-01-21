@@ -34,13 +34,17 @@ async def check_sync_required(bot: commands.Bot):
 
 
 def setup_bot(bot: commands.Bot):
-    
+    @bot.command()
+    async def guild_command_cleanup(ctx):
+        # This command clears all guild commands for the current guild
+        await bot.tree.clear_commands(guild=ctx.guild)
+        await ctx.send("Cleared all guild commands.")
+
     @bot.command()
     async def sync(ctx):
         # Use this command to quickly sync /commands with !sync
-        bot.tree.copy_global_to(guild=ctx.guild)
-        synced = await bot.tree.sync(guild=ctx.guild)
-        await ctx.send(f"Synced {len(synced)} commands to this guild.")
+        synced = await bot.tree.sync()
+        await ctx.send(f"Synced {len(synced)} commands.")
 
     @bot.event
     async def on_ready():
@@ -54,17 +58,18 @@ def setup_bot(bot: commands.Bot):
                 logger.error(f"Failed to sync commands: {e}")
 
         logger.info("Bot is initialized, have fun!")
-        
+
     return bot
+
 
 async def main():
     intents = discord.Intents.default()
     intents.message_content = True
 
     bot = commands.AutoShardedBot(command_prefix="!", intents=intents)
-    
+
     bot = setup_bot(bot)
-    
+
     async with bot:
         await load_extensions(bot)
         await bot.start(os.getenv("DISCORD_TOKEN"))
@@ -72,7 +77,7 @@ async def main():
 
 def start():
     asyncio.run(main())
-    
+
 
 if __name__ == "__main__":
     logger.info("Starting Bot")
