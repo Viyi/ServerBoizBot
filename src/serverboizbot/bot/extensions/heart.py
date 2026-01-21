@@ -9,7 +9,7 @@ class Heart(commands.Cog):
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction: Reaction, user: Union[Member, User]):
-        if reaction.emoji == "❤️" and user.id != self.bot.id:
+        if reaction.emoji == "❤️" and user.id != self.bot.user.id:
             await reaction.message.add_reaction("❤️")
             await reaction.message.channel.send("❤️")
 
