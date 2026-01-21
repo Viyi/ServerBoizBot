@@ -10,27 +10,40 @@ logger = logging.getLogger(__name__)
 # For non-python people the "bot" parameter is a pytest fixture
 # It is defined in conftest.py
 
+
 @pytest.mark.asyncio
 async def test_bot_initialization(bot):
     """Make sure the bot can load extensions."""
-    
+
     await load_extensions(bot)
-    
+
     config = dpytest.get_config()
     username = config.members[0]
-    
+
     await dpytest.message("!hello")
-    
+
     assert dpytest.get_message().content == f"Hello {username}!"
-    
+
+
+@pytest.mark.asyncio
+async def test_guild_command_cleanup(bot):
+    """Make sure the bot can load extensions."""
+
+    await load_extensions(bot)
+
+    await dpytest.message("!guild_command_cleanup")
+
+    assert dpytest.get_message().content == "Cleared all guild commands."
+
+
 @pytest.mark.asyncio
 async def test_bot_hello(bot):
     """Here's an example test for just your extension."""
     await setup_example(bot)
-    
+
     config = dpytest.get_config()
     username = config.members[0]
-    
+
     await dpytest.message("!hello")
-    
+
     assert dpytest.get_message().content == f"Hello {username}!"
