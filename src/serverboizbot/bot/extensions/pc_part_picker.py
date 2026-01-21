@@ -12,7 +12,7 @@ class PcPartPicker(commands.Cog):
 
   
     @commands.hybrid_command(name="ram", description="Check ram price!")
-    async def hello(self, ctx):
+    async def ram(self, ctx):
         
         msg = await ctx.send("Checking ram cost... ")
         ram = await get_ram_price()
