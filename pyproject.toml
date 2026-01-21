@@ -50,7 +50,7 @@ exclude = [
     "site-packages",
     "venv",
 ]
-line-length = 999
+line-length = 320
 
 [tool.uv]
 package = true
