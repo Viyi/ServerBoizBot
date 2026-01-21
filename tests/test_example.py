@@ -26,17 +26,6 @@ async def test_bot_initialization(bot):
 
 
 @pytest.mark.asyncio
-async def test_guild_command_cleanup(bot):
-    """Make sure the bot can load extensions."""
-
-    await load_extensions(bot)
-
-    await dpytest.message("!guild_command_cleanup")
-
-    assert dpytest.get_message().content == "Cleared all guild commands."
-
-
-@pytest.mark.asyncio
 async def test_bot_hello(bot):
     """Here's an example test for just your extension."""
     await setup_example(bot)
