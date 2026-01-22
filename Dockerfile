@@ -29,6 +29,12 @@ FROM builder AS tester
 
 CMD ["/app/.venv/bin/pytest", "tests"]
 
+FROM builder AS dev
+
+RUN uv pip install watchfiles
+
+CMD uv run watchfiles "uv run serverboizbot" src
+
 FROM python:3.11-slim AS prod
 WORKDIR /app
 COPY --from=builder /usr/bin/git /usr/bin/git

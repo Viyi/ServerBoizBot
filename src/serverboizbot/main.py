@@ -10,9 +10,7 @@ from pathlib import Path
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 
-logging.basicConfig(
-    level=logging.INFO, format="[%(levelname)s] %(name)s:%(lineno)s %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(name)s:%(lineno)s %(message)s")
 
 logger = logging.getLogger(__name__)
 
