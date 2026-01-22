@@ -6,6 +6,8 @@ readme = "README.md"
 requires-python = "~=3.11.0"
 dependencies = [
     "discord-py[voice]>=2.6.4",
+    "gitpython>=3.1.46",
+    "pydantic>=2.12.5",
     "pypartpicker>=2.0.5",
     "pyrootutils>=1.0.4",
     "python-dotenv>=1.2.1",
